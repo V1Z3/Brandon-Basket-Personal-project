@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shooting Drills</title>
+
+<style>
+:root {
+  --primary: #ff8c00;
+  --surface: #1e1e1e;
+  --card-border: rgba(255,255,255,0.08);
+  --text: #f5f5f5;
+  --text-muted: #a0a0a0;
+}
+
+/* SAME BACKGROUND AS DRIBBLING */
+body {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,140,0,0.08), transparent 40%),
+    radial-gradient(circle at 80% 0%, rgba(255,255,255,0.05), transparent 40%),
+    #0f0f0f;
+
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  display: flex;
+}
+
+/* SIDEBAR (IDENTICAL) */
+nav {
+  width: 260px;
+  height: 100vh;
+  position: fixed;
+  padding: 28px 18px;
+
+  background: rgba(20,20,20,0.65);
+  backdrop-filter: blur(16px);
+
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+
+/* TITLE */
+.nav-header {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: white;
+  margin-bottom: 25px;
+}
+
+.nav-header::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 3px;
+  margin-top: 10px;
+
+  background: linear-gradient(
+    90deg,
+    #ff8c00 0%,
+    rgba(255,140,0,0.4) 40%,
+    transparent 100%
+  );
+}
+
+/* HOME BUTTON */
+.home-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 12px 14px;
+  border-radius: 10px;
+
+  background: rgba(255,140,0,0.08);
+  border: 1px solid rgba(255,140,0,0.15);
+
+  color: #ff8c00;
+  text-decoration: none;
+
+  margin-bottom: 25px;
+}
+
+.home-btn:hover {
+  background: rgba(255,140,0,0.15);
+}
+
+/* LABEL */
+.nav-label {
+  font-size: 0.65rem;
+  color: #666;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+/* ITEMS */
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.nav-item:hover {
+  background: rgba(255,255,255,0.04);
+  color: #fff;
+}
+
+.nav-item.active {
+  background: rgba(255,140,0,0.12);
+  border: 1px solid rgba(255,140,0,0.2);
+  color: white;
+}
+
+.divider {
+  height: 1px;
+  background: rgba(255,255,255,0.05);
+  margin: 15px 0;
+}
+
+/* MAIN (IDENTICAL SPACING) */
+main {
+  margin-left: 260px;
+  padding: 60px;
+  width: 100%;
+  max-width: 1300px;
+}
+
+/* HEADINGS */
+h1 {
+  font-size: 2.8rem;
+  margin: 0;
+  font-weight: 800;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  margin: 10px 0 40px;
+}
+
+/* GUIDE BOX (FULL WIDTH LIKE DRIBBLING) */
+.guide-box {
+  background: var(--surface);
+  border: 1px solid var(--card-border);
+  padding: 30px;
+  border-radius: 16px;
+  margin-bottom: 50px;
+}
+
+.guide-box h2 {
+  color: var(--primary);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+}
+
+.guide-box ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.guide-box li {
+  color: var(--text-muted);
+  border-left: 2px solid #333;
+  padding-left: 15px;
+}
+
+.guide-box strong {
+  color: white;
+}
+
+/* GRID (SAME AS DRIBBLING) */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 30px;
+}
+
+/* CARDS */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255,140,0,0.4);
+}
+
+video {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: black;
+}
+
+.card-content {
+  padding: 25px;
+}
+
+.badge {
+  background: #2a2a2a;
+  color: var(--primary);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+}
+
+.card h3 {
+  margin: 10px 0 5px;
+}
+
+.card p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="nav-header">TRAINING PORTAL</div>
+
+  <a href="index.html" class="home-btn">🏠 Home Dashboard</a>
+
+  <div class="divider"></div>
+
+  <span class="nav-label">Curriculum</span>
+
+  <a href="dribbling.html" class="nav-item">🏀 Dribbling Drills</a>
+  <a href="shooting.html" class="nav-item active">🎯 Shooting Drills</a>
+  <a href="finishing.html" class="nav-item">🔥 Finishing Drills</a>
+</nav>
+
+<main>
+  <h1>Shooting Drills</h1>
+  <p class="subtitle">High-level routines to improve accuracy and consistency.</p>
+
+  <div class="guide-box">
+    <h2>TRAINING FUNDAMENTALS</h2>
+    <ul>
+      <li><strong>B.E.E.F</strong> Balance, Eyes, Elbow, Follow-through</li>
+      <li><strong>Arc</strong> Higher arc improves scoring chances</li>
+      <li><strong>Leg Power</strong> Generate power from legs</li>
+      <li><strong>Consistency</strong> Same motion every shot</li>
+    </ul>
+  </div>
+
+  <div class="grid">
+
+  <div class="card">
+    <iframe src="https://www.youtube.com/embed/5hsJVxd7BI4"
+      style="width:100%; aspect-ratio:16/9; border:0;" allowfullscreen>
+    </iframe>
+    <div class="card-content">
+      <span class="badge">Warmup</span>
+      <h3>Form Shooting</h3>
+      <p>Build muscle memory near the rim.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <iframe src="https://www.youtube.com/embed/TaOPduT2ymk"
+      style="width:100%; aspect-ratio:16/9; border:0;" allowfullscreen>
+    </iframe>
+    <div class="card-content">
+      <span class="badge">Essential</span>
+      <h3>Spot-Up Shooting</h3>
+      <p>Free Throws</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <iframe src="https://www.youtube.com/embed/29Ia2iKq0Xc"
+      style="width:100%; aspect-ratio:16/9; border:0;" allowfullscreen>
+    </iframe>
+    <div class="card-content">
+      <span class="badge">Advanced</span>
+      <h3>Pull-Up Jumper</h3>
+      <p>Shoot off the dribble with balance.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <iframe src="https://www.youtube.com/embed/X6NiGgiZg64"
+      style="width:100%; aspect-ratio:16/9; border:0;" allowfullscreen>
+    </iframe>
+    <div class="card-content">
+      <span class="badge">Advanced</span>
+      <h3>Off Screen Pull Up</h3>
+      <p>shoot after screen</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <iframe src="https://www.youtube.com/embed/S98R_3BUvtE"
+      style="width:100%; aspect-ratio:16/9; border:0;" allowfullscreen>
+    </iframe>
+    <div class="card-content">
+      <span class="badge">Technique</span>
+      <h3>Catch-and-Shoot</h3>
+      <p>Quick release from a pass.</p>
+    </div>
+  </div>
+
+   <div class="card">
+  <iframe 
+    src="https://www.youtube.com/embed/m00Vm7w2xlk"
+    style="width:100%; aspect-ratio:16/9; border:0;"
+    allowfullscreen>
+  </iframe>
+
+  <div class="card-content">
+    <span class="badge">Pro</span>
+    <h3>3 pointers</h3>
+    <p>shoot 3 pointers on 5 positions on the court</p>
+  </div>
+</div>
+      
+      
+
+</main>
+
+</body>
+</html>
